@@ -29,6 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('admin.products.create');
     }
 
     /**
@@ -40,6 +41,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required',
+            'image' => 'nullable',
+            'price' => 'nullable',
+            'description' => 'nullable'
+        ]);
+        Product::create($validated);
+        return redirect()->route('admin.products.index');
     }
 
     /**

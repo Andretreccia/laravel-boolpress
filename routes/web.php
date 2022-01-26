@@ -27,5 +27,9 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/products', 'ProductController@index')->name('products.index');
-    Route::get('/products/{{product}}', 'ProductController@show')->name('product.show');
+    Route::get('/products/create', 'ProductController@create')->name('products.create');
+    Route::post('/products', 'ProductController@store')->name('products.store');
+    Route::get('/products/{product}', 'ProductController@show')->name('products.show');
+    Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
+    Route::put('/products/{post}', 'ProductController@update')->name('products.update');
 });
