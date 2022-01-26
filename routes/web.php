@@ -16,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('guest.welcome');
-});
+})->name('home');
+Route::get('/products', 'ProductController@index')->name('products.index');
+Route::get('/products/{{product}}', 'ProductController@show')->name('product.show');
 
 Auth::routes();
 
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/products', 'ProductController@index')->name('products.index');
+    Route::get('/products/{{product}}', 'ProductController@show')->name('product.show');
 });
