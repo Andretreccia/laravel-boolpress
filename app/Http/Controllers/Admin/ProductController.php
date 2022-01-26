@@ -60,7 +60,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
-        return view('product.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -72,6 +72,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -84,6 +85,14 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $validate = $request->validate([
+            'name' => 'required',
+            'image' => 'nullable',
+            'price' => 'nullable',
+            'description' => 'nullable',
+        ]);
+        $product->update($validate);
+        return redirect()->route('admin.products.index');
     }
 
     /**

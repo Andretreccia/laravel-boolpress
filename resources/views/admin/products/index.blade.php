@@ -21,6 +21,11 @@
                     <td>{{ $product->image }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
+                    <td><a class="btn btn-secondary m-1"
+                            href="{{ route('admin.products.show', ['product' => $product->id]) }}">VIEW</a>
+                        <a class="" href="{{ route('admin.products.edit', $product->id) }}"><button
+                                type="button" class="btn btn-primary m-1">EDIT</button></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

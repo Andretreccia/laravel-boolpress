@@ -1,5 +1,13 @@
-@extends('layout.admin')
+@extends('layouts.admin')
 
 @section('content')
-    <h1>qui il singolo prodotto</h1>
+
+    <div class="container">
+        <h3>{{ $product->name }}</h3>
+        <img src="{{ $product->image }}" alt="{{ $product->name }}">
+        <p>{{ $product->price }}</p>
+        <p>{{ $product->description }}</p>
+    </div>
+
+
 @endsection

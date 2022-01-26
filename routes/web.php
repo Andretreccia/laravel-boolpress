@@ -31,5 +31,5 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::post('/products', 'ProductController@store')->name('products.store');
     Route::get('/products/{product}', 'ProductController@show')->name('products.show');
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
-    Route::put('/products/{post}', 'ProductController@update')->name('products.update');
+    Route::put('/products/{product}', 'ProductController@update')->name('products.update');
 });
