@@ -3,7 +3,8 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container text-center">
+        <h2 class="mb-4">BoolPress products:</h2>
         <div class="row gy-2">
             @foreach ($products as $product)
 
@@ -12,8 +13,9 @@
                         <img class="" src="{{ $product->image }}" alt="{{ $product->name }}">
                         <div class="">
                             <h4 class="">{{ $product->name }}</h4>
-                            <p class="">{{ $product->price }}</p>
-                            <a href="{{ route('products.show', $product->id) }}">View Product</a>
+                            <p class=""> € {{ $product->price }}</p>
+                            <a class="btn" href="{{ route('products.show', $product->id) }}">View
+                                Product</a>
                         </div>
                     </div>
                 </div>

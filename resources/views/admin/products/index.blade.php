@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>qui tutti i prodottii</h1>
+    <h1>qui tutti i prodotti</h1>
     <a class="btn btn-primary m-2" href="{{ route('admin.products.create') }}"> ADD A NEW PRODUCT</a>
     <table class="table">
         <thead>

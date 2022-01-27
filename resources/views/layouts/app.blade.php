@@ -26,7 +26,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    BOOLPRESS
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -40,6 +41,9 @@
                     <ul class="navbar-nav me-auto">
                         <li>
                             <a href="{{ route('products.index') }}" class="nav-link">Products</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.index') }}" class="nav-link">Posts</a>
                         </li>
                     </ul>
 
@@ -65,7 +69,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
