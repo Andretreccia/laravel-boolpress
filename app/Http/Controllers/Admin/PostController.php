@@ -48,7 +48,7 @@ class PostController extends Controller
             'image' => 'nullable',
             'sub_title' => 'nullable',
             'content' => 'nullable',
-            'category_id' => 'nullable|exists:categories.id'
+            'category_id' => 'nullable|exists:categories,id'
         ]);
         $validated['slug'] = Str::slug($validated['title']);
         Post::create($validated);
@@ -90,7 +90,8 @@ class PostController extends Controller
     {
         //
         $validated = $request->validate([
-            'title' => ['required', Rule::unique('posts')->ignore($post->id)],
+            //'title' => ['required', Rule::unique('posts')->ignore($post->id)],
+            'title' => 'required',
             'image' => 'nullable',
             'sub_title' => 'nullable',
             'content' => 'nullable',
