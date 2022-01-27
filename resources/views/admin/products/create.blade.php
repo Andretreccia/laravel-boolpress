@@ -3,6 +3,15 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('admin.products.store') }}" method="post">
             @csrf
             <div class="mb-3">
@@ -11,6 +20,7 @@
                     placeholder="name of product">
                 <small id="helpId" class="form-text text-muted">Help text</small>
             </div>
+
             <div class="mb-3">
                 <label for="" class="form-label"></label>
                 <input type="text" class="form-control" name="image" id="image" aria-describedby="helpId"

@@ -88,7 +88,7 @@ class ProductController extends Controller
         $validate = $request->validate([
             'name' => 'required',
             'image' => 'nullable',
-            'price' => 'nullable',
+            'price' => 'nullable|numeric',
             'description' => 'nullable',
         ]);
         $product->update($validate);
