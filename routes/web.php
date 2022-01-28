@@ -20,18 +20,25 @@ Route::get('/', function () {
 /* products */
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{product}', 'ProductController@show')->name('products.show');
-/* posts */
+/*
+ posts
+  */
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
-/* categories */
-Route::get('categories', 'CategoryController@index')->name('categories.index');
-Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
+/*
+ categories
+  */
+Route::get('categories/{category}/posts', 'CategoryController@posts')->name('categories.posts');
 
 Auth::routes();
-
+/*
+ admin
+  */
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-    /* products */
+    /*
+     products 
+     */
     Route::get('/products', 'ProductController@index')->name('products.index');
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     Route::post('/products', 'ProductController@store')->name('products.store');
@@ -40,7 +47,9 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::put('/products/{product}', 'ProductController@update')->name('products.update');
     Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy');
 
-    /* Post */
+    /* 
+    Post 
+    */
     Route::get('/posts', 'PostController@index')->name('posts.index');
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts', 'PostController@store')->name('posts.store');
