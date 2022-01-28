@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,14 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
     Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
     Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
+
+    /* 
+    categories
+     */
+    Route::get('/categories', 'CategoryController@index')->name('categories.index');
+    Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
+    Route::post('/categoty', 'CategoryController@store')->name('categories.store');
+    Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 });
 
 /* next step

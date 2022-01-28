@@ -10,7 +10,7 @@ class CategoryController extends Controller
 
     public function posts(Category $category)
     {
-        $posts = $category->posts()->orderByDesc('id')->paginate(10);
+        $posts = $category->posts;
         return view('guest.categories.posts', compact('posts', 'category'));
     }
 
