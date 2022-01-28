@@ -20,9 +20,12 @@ Route::get('/', function () {
 /* products */
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{product}', 'ProductController@show')->name('products.show');
-/* post */
+/* posts */
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+/* categories */
+Route::get('categories', 'CategoryController@index')->name('categories.index');
+Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
 
 Auth::routes();
 
@@ -35,17 +38,18 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/products/{product}', 'ProductController@show')->name('products.show');
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
     Route::put('/products/{product}', 'ProductController@update')->name('products.update');
+    Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy');
 
     /* Post */
     Route::get('/posts', 'PostController@index')->name('posts.index');
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts', 'PostController@store')->name('posts.store');
     Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+    //Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
     Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
     Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
+    Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
 });
-
-
 
 /* next step
 Resources: routes 7
