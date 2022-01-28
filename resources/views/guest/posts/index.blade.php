@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     {{-- navbar categories and tags --}}
-    <div class="container">
+    <div class="container d-flex">
         <div class="col-md-4">
             <h3>Categories:</h3>
             <ul>
@@ -9,6 +9,14 @@
                     <li><a href="{{ route('categories.posts', $category->id) }}">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
+        </div>
+        <div class="col-md-4">
+            <h3>Tags:</h3>
+            {{-- <ul>
+                @foreach ($categories as $category)
+                    <li><a href="{{ route('categories.posts', $category->id) }}">{{ $category->name }}</a></li>
+                @endforeach
+            </ul> --}}
         </div>
     </div>
 
