@@ -27,11 +27,11 @@ Route::get('products/{product}', 'ProductController@show')->name('products.show'
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 /*
- categories
+    categories
   */
 Route::get('categories/{category}/posts', 'CategoryController@posts')->name('categories.posts');
 /* 
-tags
+    tags
  */
 Route::get('tags/{tag}/posts', 'TagController@posts')->name('tags.posts');
 

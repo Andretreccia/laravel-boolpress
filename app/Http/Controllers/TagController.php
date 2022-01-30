@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
 
-    public function posts(Tag $tags)
+    public function posts(Tag $tag)
     {
-        $posts = $tags->posts;
-        return view('guest.tags.posts', compact('posts', 'tags'));
+        $posts = $tag->posts;
+        return view('guest.tags.posts', compact('posts', 'tag'));
     }
     /**
      * Display a listing of the resource.
