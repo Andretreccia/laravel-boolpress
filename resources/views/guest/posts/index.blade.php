@@ -12,11 +12,11 @@
         </div>
         <div class="col-md-4">
             <h3>Tags:</h3>
-            {{-- <ul>
-                @foreach ($categories as $category)
-                    <li><a href="{{ route('categories.posts', $category->id) }}">{{ $category->name }}</a></li>
+            <ul>
+                @foreach ($tags as $tag)
+                    <li><a href="{{ route('tags.posts', $tag->id) }}">{{ $tag->name }}</a></li>
                 @endforeach
-            </ul> --}}
+            </ul>
         </div>
     </div>
 

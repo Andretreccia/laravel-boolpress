@@ -30,6 +30,10 @@ Route::get('posts/{post}', 'PostController@show')->name('posts.show');
  categories
   */
 Route::get('categories/{category}/posts', 'CategoryController@posts')->name('categories.posts');
+/* 
+tags
+ */
+Route::get('tags/{tag}/posts', 'TagController@posts')->name('tags.posts');
 
 Auth::routes();
 /*

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+
+    public function posts(Tag $tags)
+    {
+        $posts = $tags->posts;
+        return view('guest.tags.posts', compact('posts', 'tags'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +21,7 @@ class TagController extends Controller
     public function index()
     {
         //
+
     }
 
     /**

@@ -39,6 +39,18 @@
                     value="{{ $post->sub_title }}">
                 <small id="helpId" class="form-text text-muted">Help text</small>
             </div>
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <select multiple class="form-control" name="tags[]" id="tags">
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}" {{ $post->tags->contains($tag) ? 'selected' : '' }}>
+                            {{ $tag->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            @error('tags')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <button class="form-control w-25 m-auto" type="submit">EDIT IT!</button>
         </form>
     </div>

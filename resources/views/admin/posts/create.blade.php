@@ -48,6 +48,21 @@
                     @endforeach
                 </select>
             </div>
+            {{-- select tags --}}
+            <div class="mb-3">
+                <label for="tags" class="form-label">Tags</label>
+                <select multiple class="form-select" name="tags[]" id="tags">
+                    <option disabled>Select all tags</option>
+
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            @error('tags')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
             <button class="form-control w-25 m-auto" type="submit">CREATE IT!</button>
         </form>
     </div>
