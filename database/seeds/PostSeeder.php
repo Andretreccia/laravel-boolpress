@@ -26,8 +26,13 @@ class PostSeeder extends Seeder
                 true,
                 $post->title
             );
+            /* con l upload 
+
+            prima php artisan storage:link
+            crea una cartella
+            $post->image = 'nome_cartella/' . $faker->image('storage/app/public/nome_cartella', 640, 480. 'posts', false); */
             $post->sub_title = $faker->sentence();
-            $post->content = $faker->paragraph();
+            $post->content = $faker->paragraphs(20, true);
             $post->save();
         }
     }

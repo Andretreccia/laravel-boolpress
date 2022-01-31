@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -23,9 +23,9 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label"></label>
-                <input type="text" class="form-control " name="image" id="image" aria-describedby="helpId"
+                <input type="file" class="form-control " name="image" id="image" aria-describedby="helpId"
                     value="{{ $post->image }}">
-                <small id="helpId" class="form-text text-muted">Image url</small>
+                <small id="helpId" class="form-text text-muted">Image </small>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label"></label>

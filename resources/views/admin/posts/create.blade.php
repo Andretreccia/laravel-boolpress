@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label"></label>
@@ -20,10 +20,15 @@
                     placeholder="title of post">
                 <small id="helpId" class="form-text text-muted">Help text</small>
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="image" class="form-label"></label>
                 <input type="text" class="form-control" name="image" id="image" aria-describedby="helpId"
                     placeholder="image url">
+                <small id="helpId" class="form-text text-muted">Help text</small>
+            </div> --}}
+            <div class="mb-3">
+                <label for="image" class="form-label"></label>
+                <input type="file" class="form-control" name="image" id="image" aria-describedby="helpId">
                 <small id="helpId" class="form-text text-muted">Help text</small>
             </div>
             <div class="mb-3">

@@ -4,13 +4,13 @@
 
     <div class="container">
         <h3>{{ $post->title }}</h3>
-        <img src="{{ $post->image }}" alt="{{ $post->title }}">
+        <img src="{{ asset('storage/' . $post->image) }} " alt="{{ $post->title }}">
         <p>{{ $post->sub_title }}</p>
         <p>{{ $post->content }}</p>
     </div>
     <div class="categories">
         @if ($post->category)
-            category: <a href="{{ route('categories.posts', $post->category->id) }}">{{ $post->category->name }}</a>
+            category: <a href="">{{ $post->category->name }}</a>
         @else
             <h1>nessuna categoria</h1>
         @endif

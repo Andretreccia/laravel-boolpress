@@ -19,6 +19,7 @@
                     <td scope="row">{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->image }}</td>
+                    <td><img src="{{ asset('storage/' . $post->image) }} " alt="" class="w-100"></td>
                     <td>{{ $post->sub_title }}</td>
                     <td>{{ $post->content }}</td>
                     <td><a class="btn btn-secondary m-1"

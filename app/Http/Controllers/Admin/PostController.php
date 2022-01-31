@@ -9,6 +9,7 @@ use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use function GuzzleHttp\Promise\all;
@@ -52,7 +53,7 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            'image' => 'nullable',
+            //'image' => 'nullable',
             'sub_title' => 'nullable',
             'content' => 'nullable',
             'category_id' => 'nullable|exists:categories,id',
@@ -60,6 +61,11 @@ class PostController extends Controller
         ]);
         $validated['slug'] = Str::slug($validated['title']);
         $validated['user_id'] = Auth::id();
+        //$validated['image'] = Storage::put('uploads', $validated['image']);
+        if ($request->file('image')) {
+            $image_path = $request->file('image')->store('storage');
+            $validated['image'] = $image_path;
+        }
         $_post = Post::create($validated);
         if ($request->has('tags')) {
             $request->validate([
@@ -112,7 +118,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
-        if (Auth::id() === $post->iser_id) {
+        if (Auth::id() === $post->user_id) {
             $validated = $request->validate([
                 //'title' => ['required', Rule::unique('posts')->ignore($post->id)],
                 'title' => 'required',
@@ -121,16 +127,23 @@ class PostController extends Controller
                 'content' => 'nullable',
                 'category_id' => 'nullable | exists:categories,id',
             ]);
+
+            if ($request->file('image')) {
+                $image_path = $request->file('image')->store('storage');
+                $validated['image'] = $image_path;
+                Storage::delete($post->image);
+            }
+
             if ($request->has('tags')) {
                 $request->validate([
                     'tags' => ['nullable', 'exists:tags,id']
                 ]);
-                $post->update($validated);
                 $post->tags()->sync($request->tags);
             }
+            $post->update($validated);
             return redirect()->route('admin.posts.index');
         } else {
-            abort(403);
+            abort(404);
         }
     }
     /**
@@ -144,6 +157,7 @@ class PostController extends Controller
         if (Auth::id() === $post->user_id) {
             //
             $post->delete();
+            Storage::delete($post->image);
             return redirect()->route('admin.posts.index');
         } else {
             abort(403);
