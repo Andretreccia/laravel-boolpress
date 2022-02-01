@@ -1,20 +1,20 @@
 @component('mail::message')
-# Introduction
+    # Introduction
 
-The body of your message.
-{{ $data['content'] }}
-
-
-@component('mail::panel')
-{{ $data['name'] }}
-{{ $data['email'] }}
-@endcomponent
+    The body of your message.
+    {{ $contact->content }}
 
 
-@component('mail::button', ['url' => $url])
-Button Text
-@endcomponent
+    @component('mail::panel')
+        name:{{ $contact->name }} |
+        email:{{ $contact->email }}
+    @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+
+    @component('mail::button', ['url' => $url])
+        Button Text
+    @endcomponent
+
+    Thanks,<br>
+    {{ config('app.name') }}
 @endcomponent

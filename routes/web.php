@@ -40,8 +40,10 @@ Auth::routes();
 /*
 contacts
  */
-Route::get('contacts', 'PageController@contacts')->name('contacts');
-Route::post('contacts', 'PageController@sendContact')->name('contacts.send');
+/* Route::get('contacts', 'PageController@contacts')->name('contacts');
+Route::post('contacts', 'PageController@sendContact')->name('contacts.send'); */
+Route::get('contacts', 'ContactController@show_c_page')->name('contacts');
+Route::post('contacts', 'ContactController@sendStoreContact')->name('contacts.send');
 /*
  admin
   */
@@ -78,35 +80,3 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::post('/categoty', 'CategoryController@store')->name('categories.store');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 });
-
-/* next step
-Resources: routes 7
-
-Model: Post
--title
--slog
--sub_title
-sub_title
--body
--image
--is_public
-
-make:model nome -a per creare tutto
-
-
-per implementare lo slug sulla rotta =   {{route('post.index', $post->slug)}}
-
-    nel post model inserire Public function(){
-    }
-
-table categories
-id
-name
-slug
-
-
-category in relazione con post
-
-quindi creare migrazione, controller 
-
-*/
