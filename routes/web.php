@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ contacts
 Route::post('contacts', 'PageController@sendContact')->name('contacts.send'); */
 Route::get('contacts', 'ContactController@show_c_page')->name('contacts');
 Route::post('contacts', 'ContactController@sendStoreContact')->name('contacts.send');
+
 /*
  admin
   */
@@ -59,7 +61,6 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
     Route::put('/products/{product}', 'ProductController@update')->name('products.update');
     Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy');
-
     /* 
     Post 
     */
@@ -71,7 +72,6 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
     Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
     Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
-
     /* 
     categories
      */
@@ -79,4 +79,10 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
     Route::post('/categoty', 'CategoryController@store')->name('categories.store');
     Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    /*
+     contacts 
+     */
+    //Route::resource('/contacts', ContactController::class)->only(['index']);
+    Route::get('/contacts', 'ContactController@index')->name('contacts.index');
+    Route::get('/contacts/{contact}', 'ContactController@show')->name('contacts.show');
 });
