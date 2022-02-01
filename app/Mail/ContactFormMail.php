@@ -33,6 +33,6 @@ class ContactFormMail extends Mailable
         return $this
             ->subject('New')
             ->from('noreply@admin.com')
-            ->view('email.contacts.index');
+            ->view('email.contacts.index ');
     }
 }
