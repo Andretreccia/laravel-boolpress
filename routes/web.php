@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{product}', 'ProductController@show')->name('products.show');
 /*
- posts
+    posts
   */
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
@@ -36,6 +36,12 @@ Route::get('categories/{category}/posts', 'CategoryController@posts')->name('cat
 Route::get('tags/{tag}/posts', 'TagController@posts')->name('tags.posts');
 
 Auth::routes();
+
+/*
+contacts
+ */
+Route::get('contacts', 'PageController@contacts')->name('contacts');
+Route::post('contacts', 'PageController@sendContact')->name('contacts.send');
 /*
  admin
   */
