@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Resources\PostResource;
 use App\Http\Controllers\ContactController;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +48,15 @@ Route::post('contacts', 'PageController@sendContact')->name('contacts.send'); */
 Route::get('contacts', 'ContactController@show_c_page')->name('contacts');
 Route::post('contacts', 'ContactController@sendStoreContact')->name('contacts.send');
 
+/* 
+api
+*/
+Route::get('posts/{post}', function (Post $post) {
+    return new PostResource(Post::find($post));
+});
+Route::get('blog', function () {
+    return view('blog');
+});
 /*
  admin
   */

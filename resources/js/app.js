@@ -29,4 +29,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        posts: ''
+    },
+    mounted() {
+        Axios.get('/api/posts').then(response => {
+            this.posts = response.data.data;
+        }).catch(error => {
+            console.error('Error! ' + error);
+        })
+    }
 });
