@@ -18,6 +18,6 @@ class PostController extends Controller
         /* $posts = Post::with(['tags'])->paginate();
         return $posts; */
 
-        return PostResource::collection(Post::with(['category', 'tags'])->paginate());
+        return PostResource::collection(Post::with(['category', 'tags'])->paginate(10));
     }
 }

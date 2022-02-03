@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     $posts = Post::all();
     return response()->json(['response' => $posts]);
 }); */
-Route::get('posts', 'API\PostController@index');
+Route::get('posts', 'API\PostController@index')->name('api.blog');
+Route::get('posts/{post}', function (Post $post) {
+    return new PostResource(Post::find($post));
+});

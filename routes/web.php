@@ -51,12 +51,9 @@ Route::post('contacts', 'ContactController@sendStoreContact')->name('contacts.se
 /* 
 api
 */
-Route::get('posts/{post}', function (Post $post) {
-    return new PostResource(Post::find($post));
-});
 Route::get('blog', function () {
-    return view('blog');
-});
+    return view('guest.api.blog');
+})->name('blog');
 /*
  admin
   */
